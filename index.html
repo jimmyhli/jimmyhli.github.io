@@ -1,16 +1,24 @@
-<HTML>
-<BODY>
+﻿<!DOCTYPE html>
 
-<H1>
-  Jimmy's website</H1>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Newsletter Generator</title>
+    <link rel="stylesheet" href="app.css" type="text/css" />
+    <script src="app.js"></script>
+</head>
+<body>
+    <h1>Newsletter Generator</h1>
 
- <H1>This is the content of my webpage </H2>
-<P>
-Please look at <A HREF="resume.html">my resume</A>.
-<P>
-Please look at <A HREF="voiceConverter.html">voice Converter</A>.
-<HR>
-This page was written by Jimmy.<BR>
-Feb.18, 2017
-</BODY>
-</HTML>
+    <div id="content"></div>
+
+    <h3>Now, input the start date and end date in the format of mm-dd, separated by comma.</h3>
+
+    <textarea id="userInput" cols="20" rows="1"></textarea>
+
+    <p><button onclick="validateRequest()">Run!</button></p>
+
+    <h3>Here's the result, check it out!</h3>
+    <div id="result" style="width:50%"></div>
+</body>
+</html>

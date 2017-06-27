@@ -6,14 +6,6 @@
 
 <div id="view-container" class="row-fluid">
 
-<div id="actualImage" class="span4 hover-box">
-<div class="hover-box-overlay" style="margin-top: -10px">
-<div class="news-page">[loop query="category_name=News" num=1 pagination=false]
-<div class="news-entry" style="text-align: center;">[link_with_content link_class="title"]</div>[/loop]
-</div>
-</div>
-</div>
-
 <div class="span4 hover-box" style="background-image: url(http://digitalsignage2.sites.olt.ubc.ca/files/2011/06/SPPH.jpg)">
 <div class="hover-box-overlay">
 <div style="border: 0px solid #085952; padding-right: 10px; padding-left: 10px; padding-bottom: 10px;">
@@ -131,10 +123,10 @@
   height: 225px:
   
 }
- </style>
+</style>
  
  
-  <script type="text/javascript">
+<script type="text/javascript">
 /*********************************************************************
 *  #### Twitter Post Fetcher v17.0.0 ####
 *  Coded by Jason Mayes 2015. A present to all the developers out there.
@@ -241,7 +233,7 @@ handleTweets(arrayTweets);inProgress=false;if(queue.length>0){twitterFetcher.fet
     }
     
     /*The following part fetches the link of the featured image*/
-    let finalLink = '';
+    /*let finalLink = '';
     let featuredImage = document.getElementById('featured-image');
     let featuredImageHTML = featuredImage.outerHTML;
     console.log(featuredImageHTML);
@@ -256,7 +248,7 @@ handleTweets(arrayTweets);inProgress=false;if(queue.length>0){twitterFetcher.fet
     //document.getElementById("actualImage").style.backgroundColor = "red";
     document.getElementById("actualImage").style.backgroundImage = "url(" + finalLink + ")";
     
-    /*let newsHTML = '';
+    let newsHTML = '';
     var newsItem = '<div class="span4 hover-box"' + 'style="background-image: url(' + finalLink + ');"' + '><div class="hover-box-overlay"><span>';
     newsItem += '<div class="news-page">' + '[loop query="category_name=News" num=1 pagination=false]' +  '<div class="news-entry" style="text-align: center;">'
     newsItem += '[link_with_content link_class="title"]</div>[/loop]</div></div></div>';

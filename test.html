@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
 <body>
-<div id="featured-image" hidden> [loop query="category_name=News" num=1 pagination=false][image_with_src img_size="full"][/loop]</div>
-
 
 <div id="view-container" class="row-fluid">
 
-<div class="span4 hover-box" style="background-image: url(http://digitalsignage2.sites.olt.ubc.ca/files/2011/06/SPPH.jpg)">
+<div class="hover-box" style="background-image: url(http://digitalsignage2.sites.olt.ubc.ca/files/2011/06/SPPH.jpg); width:48%;">
 <div class="hover-box-overlay">
 <div style="border: 0px solid #085952; padding-right: 10px; padding-left: 10px; padding-bottom: 10px;">
 <div style="text-align:center; margin-bottom: 5px; font-size:14pt;"></br><b> Upcoming Events</b></div>
@@ -16,36 +14,6 @@
 </div>
 
  <style type="text/css">
- .buttont2 {
-  background-color: rgba(8, 89, 82, .8);
-  width: 30%;
-  height: 70px;
-  color: #FFFFFF;
-  border: none;
-  text-align: center;
-  font-size: 16px;
-  margin: 6px 5px 5px 20px;
-  padding: 15px;
-   float: left;
-}
-
-
-.buttont1 {
-  background-color: rgba(8, 89, 82, .8);
-  width: 30%;
-  height: 70px;
-  color: #FFFFFF;
-  border: none;
-  text-align: center;
-  font-size: 16px;
-  margin: 6px 0px 0px 20px;
-  padding: 15px;
-
-}
-
-.feed-shortcode feed_widget feed-view-upcoming{
-  max-height: 150px;
-}
 
 /*****************************
 * Styles for Twitter container
@@ -261,7 +229,7 @@ handleTweets(arrayTweets);inProgress=false;if(queue.length>0){twitterFetcher.fet
     var html = '';
     for (var i = 0; i < filteredTweets.length; i++) {
       //console.log(filteredTweets[i]);
-      var item = '<div class="span4 hover-box"' + 'style="background-image: url(' + filteredTweets[i].image + ');"' + '><div class="hover-box-overlay"><span>';
+      var item = '<div class="hover-box"' + 'style="width:48%;background-image: url(' + filteredTweets[i].image + ');"' + '><div class="hover-box-overlay"><span>';
       item += filteredTweets[i].tweet; //content of the tweet
       item += '</span></div></div>';
       html += item;

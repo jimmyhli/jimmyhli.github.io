@@ -2,37 +2,45 @@
 <html>
 <body style="text-align:center">
 
-<ul>
-<div id="view-container">
+<ul id="view-container" class="row">
+
+<li>
 <div class="hover-box" style="background-image: url(https://static.ubyssey.ca/media/images/2017/01/20161205Ben_Geisberg_-2-medium.jpg); width:30%;">
 <div class="hover-box-overlay">
 <a href="https://www.ubyssey.ca/science/its-snowed-a-lot-duh/">This February broke snowfall records in Vancouver
 </a>
 </div>
 </div>
+</li>
 
+<li>
 <div class="hover-box" style="background-image: url(https://static.ubyssey.ca/media/images/2015/10/wpid-beach-photo_20070711_flickr-nan-palmero-medium.jpg); width:30%;">
 <div class="hover-box-overlay">
 <a href="https://www.ubyssey.ca/science/hot-weather-linked-to-increased-mortality-in-vancouver/">Hot weather linked to increased mortality in Vancouver
 </a>
 </div>
 </div>
+</li>
 
+<li>
 <div class="hover-box" style="background-image: url(https://med-fom-spph.sites.olt.ubc.ca/files/2017/07/compressed_yukon_banner.jpg); width:30%;">
 <div class="hover-box-overlay">
 <a href="http://spph.ubc.ca/student-research-cancer-trends-in-northern-canada/">Student Research: Identifying Cancer Trends in Northern Canada
 </a>
 </div>
 </div>
+</li>
 
+<li>
 <div class="hover-box" style="background-image: url(http://med-fom-spph.sites.olt.ubc.ca/files/2017/05/NicoleBoeder800.jpg); width:30%;">
 <div class="hover-box-overlay">
 <a href="http://spph.ubc.ca/msc-oeh-alumna-nicole-boeder-wins-roberta-ellis-award/">MSc OEH alumna Nicole Boeder wins Roberta Ellis Award
 </a>
 </div>
 </div>
-</div>
+</li>
 </ul>
+
 
  <style type="text/css">
 
@@ -66,10 +74,6 @@
   margin-left: 0;
 }
 
-ul li{
-  display: inline;
-}
-
 
 #view-container .hover-box-overlay {
   background-color: rgba(255,255,255,0.6); /*the last digit is the value of transparency*/
@@ -83,6 +87,18 @@ ul li{
   transition: 0.25s;
 
 }
+
+
+ul.row {
+  display: list-item;
+  width: 100%;
+  text-align: center;
+}
+
+ul.row > li {
+  display: list-item;
+}
+
 
 #view-container .hover-box-overlay:hover {
   background-color: rgba(0, 33, 69, 0.3); /*background colour after hovoring on*/

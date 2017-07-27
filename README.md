@@ -8,9 +8,9 @@ Come [here](https://haoyuanli.github.io/projects) to view a list of programming 
 
 ### Besides Coding...
 
-I sometimes [put words together](https://haoyuanli.github.io/publications/)
+I sometimes [put words together](https://haoyuanli.github.io/publications/)!
 
-I chase after [typhoon](https://metoc.ndbc.noaa.gov/JTWC/)
+I like to chase after [typhoons](https://metoc.ndbc.noaa.gov/JTWC/)...
 
 I found that UBC is [so much warmer](http://weather.eos.ubc.ca/wxfcst/users/Guest/ubcrs_withicons/index.php?location=3510) than the [YVR airport](https://weather.gc.ca/city/pages/bc-74_metric_e.html)
 

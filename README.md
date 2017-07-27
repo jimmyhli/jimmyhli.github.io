@@ -8,7 +8,7 @@ Come [here](https://haoyuanli.github.io/projects) to view a list of programming 
 
 ### Besides Coding...
 
-I sometimes [put words together](https://haoyuanli.github.io/publications.html/)!
+I sometimes [put words together](https://haoyuanli.github.io/publications)!
 
 I like chasing after [typhoons](https://metoc.ndbc.noaa.gov/JTWC/)...
 

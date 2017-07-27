@@ -1,14 +1,20 @@
 ## Hello!
 
-I am a fourth-year computer science student at [the University of British Columbia](https://www.ubc.ca).
+I am a fourth-year computer science student at [the University of British Columbia](https://www.ubc.ca), expecting to graduate in May 2018.
 
 ### Programming Projects
 
-Click [here](https://haoyuanli.github.io/projects) to view a list of programming projects that I have been working on.
+Come [here](https://haoyuanli.github.io/projects) to view a list of programming projects that I have been working on.
 
-### Besides coding
+### Besides Coding...
 
-I like to [put words together](https://haoyuanli.github.io/publications)
+I sometimes [put words together](https://haoyuanli.github.io/publications/)
+
+I chase after [typhoon](https://metoc.ndbc.noaa.gov/JTWC/)
+
+I found that UBC is [so much warmer](http://weather.eos.ubc.ca/wxfcst/users/Guest/ubcrs_withicons/index.php?location=3510) than the [YVR airport](https://weather.gc.ca/city/pages/bc-74_metric_e.html)
 
 ### Contact
-[Linkedin](linkedin.com/in/haoyuan-li)
+Interested in knowing more about me? Here is my [Linkedin](linkedin.com/in/haoyuan-li).
+
+And [Github](haoyuanli.github.com).

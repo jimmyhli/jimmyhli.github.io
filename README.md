@@ -12,22 +12,3 @@ I like to [put words together](https://haoyuanli.github.io/publications)
 
 ### Contact
 [Linkedin](linkedin.com/in/haoyuan-li)
-
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```

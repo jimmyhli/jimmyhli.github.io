@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<body style="text-align:center">
+
+<ul>
+<div id="view-container">
+<div class="hover-box" style="background-image: url(https://static.ubyssey.ca/media/images/2017/01/20161205Ben_Geisberg_-2-medium.jpg); width:30%;">
+<div class="hover-box-overlay">
+<a href="https://www.ubyssey.ca/science/its-snowed-a-lot-duh/">This February broke snowfall records in Vancouver
+</a>
+</div>
+</div>
+
+<div class="hover-box" style="background-image: url(https://static.ubyssey.ca/media/images/2015/10/wpid-beach-photo_20070711_flickr-nan-palmero-medium.jpg); width:30%;">
+<div class="hover-box-overlay">
+<a href="https://www.ubyssey.ca/science/hot-weather-linked-to-increased-mortality-in-vancouver/">Hot weather linked to increased mortality in Vancouver
+</a>
+</div>
+</div>
+
+<div class="hover-box" style="background-image: url(https://med-fom-spph.sites.olt.ubc.ca/files/2017/07/compressed_yukon_banner.jpg); width:30%;">
+<div class="hover-box-overlay">
+<a href="http://spph.ubc.ca/student-research-cancer-trends-in-northern-canada/">Student Research: Identifying Cancer Trends in Northern Canada
+</a>
+</div>
+</div>
+
+<div class="hover-box" style="background-image: url(http://med-fom-spph.sites.olt.ubc.ca/files/2017/05/NicoleBoeder800.jpg); width:30%;">
+<div class="hover-box-overlay">
+<a href="http://spph.ubc.ca/msc-oeh-alumna-nicole-boeder-wins-roberta-ellis-award/">MSc OEH alumna Nicole Boeder wins Roberta Ellis Award
+</a>
+</div>
+</div>
+</div>
+</ul>
+
+ <style type="text/css">
+
+/*****************************
+* Styles
+******************************/
+#view-container [data-scribe="element:avatar"],
+#view-container [data-scribe="element:name"] {
+  display: none;
+}
+
+#view-container .hover-box-overlay > span {
+  left: 50%;
+  position: absolute; 
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+}
+
+#view-container .hover-box {
+  background-position: center;   
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  height: 225px;
+  margin-bottom: 1%
+}
+
+
+#view-container .hover-box:first-child {
+  margin-left: 0;
+}
+
+ul li{
+  display: inline;
+}
+
+
+#view-container .hover-box-overlay {
+  background-color: rgba(255,255,255,0.6); /*the last digit is the value of transparency*/
+  color: #002145;
+  min-height: 100px;
+  height: 225px;
+  position: relative;
+  font-size: 24pt;
+  text-align:center;
+  word-wrap: break-word;
+  transition: 0.25s;
+
+}
+
+#view-container .hover-box-overlay:hover {
+  background-color: rgba(0, 33, 69, 0.3); /*background colour after hovoring on*/
+  color: white;
+  transition: 0.25s;
+
+}
+
+#view-container .hover-box-overlay a {
+  color: #002145;
+  /*text-decoration: underline;*/
+}
+
+#view-container .hover-box-overlay:hover a {
+  color: white;
+}
+
+@media screen and (max-width:767px){
+    .hover-box{
+        margin-top:10px;
+        margin-left: 0 !important;
+    }
+}
+
+</style>
+ 
+ </body>
+</html>

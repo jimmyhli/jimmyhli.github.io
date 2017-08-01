@@ -1673,7 +1673,7 @@
 
 	h2 {
 		font-size: 1.75rem;
-		text-transform: uppercase;
+		/*text-transform: uppercase;*/
 	}
 
 		@media screen and (max-width: 736px) {
@@ -1686,7 +1686,7 @@
 
 	h3 {
 		font-size: 1.35rem;
-		text-transform: uppercase;
+		/*text-transform: uppercase;*/
 	}
 
 	h4 {
@@ -1855,7 +1855,7 @@
 		text-align: center;
 		text-decoration: none;
 		white-space: nowrap;
-		text-transform: uppercase;
+		/*text-transform: uppercase;*/
 	}
 
 		input[type="submit"].icon,

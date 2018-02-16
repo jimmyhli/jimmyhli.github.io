@@ -1,0 +1,37 @@
+<script>
+var finalIDs = "";
+
+var fetchIDs = new XMLHttpRequest();
+fetchIDs.onreadystatechange = function() {
+    if (fetchIDs.readyState == XMLHttpRequest.DONE) {
+        var xmlListofID = fetchIDs.responseXML;
+        var tempIDs = xmlListofID.getElementsByTagName("IdList");
+        console.log(tempIDs);
+        for (var i = 1; i <= 10; i++){
+         	 finalIDs = finalIDs + tempIDs[0].children[i].innerHTML + ",";
+        }
+        console.log(finalIDs);
+        console.log('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/epost.fcgi?db=pubmed&id='+ finalIDs);
+
+        var fetchMeta = new XMLHttpRequest();
+        fetchMeta.onreadystatechange = function(){
+        	if (fetchMeta.readyState == XMLHttpRequest.DONE) {
+        		var xmlWebEnv = fetchMeta.responseXML;
+        		var queryKey = xmlWebEnv.getElementsByTagName("QueryKey")[0].innerHTML;
+        		var tempWebEnv = xmlWebEnv.getElementsByTagName("WebEnv")[0].innerHTML;
+
+        		console.log(xmlWebEnv);
+
+        		console.log(queryKey);
+        		console.log(tempWebEnv);
+
+        	}
+        }
+        fetchMeta.open('GET','https://eutils.ncbi.nlm.nih.gov/entrez/eutils/epost.fcgi?db=pubmed&id='+ finalIDs,true);
+        fetchMeta.send(null);
+    }
+}
+fetchIDs.open('GET', 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=(Department%20of%20Anesthesiology%2C%20Pharmacology%20%26%20Therapeutics%5BAffiliation%5D)%20AND%20University%20of%20British%20Columbia%5BAffiliation%5D', true);
+fetchIDs.send(null);
+
+</script>

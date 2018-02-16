@@ -25,9 +25,19 @@ fetchIDs.onreadystatechange = function() {
         		console.log(queryKey);
         		console.log(tempWebEnv);
 
+                var fetchArticles = new XMLHttpRequest();
+                fetchArticles.onreadystatechange = function(){
+                    if (fetchArticles.readyState == XMLHttpRequest.DONE) {
+                        var xmlArticles = fetchArticles.responseXML;
+                        console.log(xmlArticles);
+                    }
+                }
+                fetchArticles.open('GET', 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&query_key=' + queryKey + '&WebEnv=' + tempWebEnv, true);
+                fetchArticles.send(null);
+
         	}
         }
-        fetchMeta.open('GET','https://eutils.ncbi.nlm.nih.gov/entrez/eutils/epost.fcgi?db=pubmed&id='+ finalIDs,true);
+        fetchMeta.open('GET','https://eutils.ncbi.nlm.nih.gov/entrez/eutils/epost.fcgi?db=pubmed&id='+ finalIDs, true);
         fetchMeta.send(null);
     }
 }

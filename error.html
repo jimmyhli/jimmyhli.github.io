@@ -1,0 +1,58 @@
+   <!DOCTYPE html>
+  <html>
+    <head>
+      <title>FeelStats</title>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="main.css">
+      <meta name="description" content="FeelStats analyzes reddit comments using the Vader Sentiment Library to aggregate reddit thread data into stats.">
+      <meta name="keyword" content="Reddit, FeelStats, Reddit Analyze">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+
+<div class="container">
+<section class="input">
+<h1 class="title">FeelStats</h1>
+
+<form method="POST" id="userInputForm">
+<input type="text" style="display:none" name="userInput" placeholder="Enter redditor id" class="inputBox" id="userBox">
+<input type="text" name="threadInput" placeholder="Enter reddit thread link" class="inputBox" id="threadBox" disabled value="Hi, we are sorry but our app is not available everyday from 1:30 - 7:30 am, PST. We apologize for any inconveniences.">
+<input type="submit" onclick="loading()" id="submitBtn" class="btn waves-effect waves-light disabled">
+</form>
+
+
+<div class="switch">
+<button onclick="switchMode()" class="btn waves-effect blue disabled"><div id="toggle">Switch to Redditor Mode</div></button>
+</div>
+
+</section>
+
+
+<div id="avgPos"></div>
+
+<div id="commentsScatter"></div>
+
+<div id="mostPosComment"></div>
+<div id="mostNegComment"></div>
+
+</section>
+</div>
+
+
+<div class="row">
+      <div class="col s4"><canvas id="mostActivePosters" width="3" height="2"></canvas></div>
+      <div class="col s4"><canvas id="mostPositivePosters" width="3" height="2"></canvas></div>
+      <div class="col s4"><canvas id="mostNegativePosters" width="3" height="2"></canvas></div>
+</div>
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+      <script src={{ url_for('static', filename='main.js') }}></script>
+    </body>
+  </html>

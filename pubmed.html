@@ -1,5 +1,27 @@
+
+<style type="text/css" >
+
+.LiTitle{
+    font-size: 20px;
+}
+
+.LiAuthor{
+    font-style: italic;
+}
+
+ul {
+    margin-top: 30px;
+}
+
+ 
+</style>
+
+<div id="articles"></div>
+
+
 <script>
 var finalIDs = "";
+var finalArticles = [];
 
 var fetchIDs = new XMLHttpRequest();
 fetchIDs.onreadystatechange = function() {
@@ -7,7 +29,7 @@ fetchIDs.onreadystatechange = function() {
         var xmlListofID = fetchIDs.responseXML;
         var tempIDs = xmlListofID.getElementsByTagName("IdList");
         console.log(tempIDs);
-        for (var i = 1; i <= 10; i++){
+        for (var i = 0; i < 10; i++){
          	 finalIDs = finalIDs + tempIDs[0].children[i].innerHTML + ",";
         }
         console.log(finalIDs);
@@ -29,7 +51,63 @@ fetchIDs.onreadystatechange = function() {
                 fetchArticles.onreadystatechange = function(){
                     if (fetchArticles.readyState == XMLHttpRequest.DONE) {
                         var xmlArticles = fetchArticles.responseXML;
+                        var tempArticles = xmlArticles.getElementsByTagName("DocSum");
                         console.log(xmlArticles);
+                        console.log(tempArticles);
+                        var tempJSON;
+
+
+                        for (let j = 0; j < tempArticles.length; j++){
+                            tempJSON = {};
+                            //tempJSON["Id"] = tempArticles[j].children[0].innerHTML;
+                            tempJSON["Date"] = tempArticles[j].children[1].innerHTML;
+
+                            var tempAuthors = tempArticles[j].children[4].children;
+                            var listAuthors = "";
+
+                            for (let k = 0; k < tempAuthors.length; k++){
+                                listAuthors = listAuthors + tempAuthors[k].innerHTML + ", ";
+                            }
+                            listAuthors = listAuthors.substring(0, listAuthors.length - 2);
+
+                            tempJSON["Author"] = listAuthors;
+                            tempJSON["Title"] = tempArticles[j].children[6].innerHTML;
+                            tempJSON["Journal"] = tempArticles[j].children[23].innerHTML;
+                            tempJSON["URL"] = "https://www.ncbi.nlm.nih.gov/pubmed/" + tempArticles[j].children[0].innerHTML;
+
+                            finalArticles.push(tempJSON);
+
+                            tempNode = document.createElement("ul");
+                            var LiDate = document.createElement("li");
+                            var LiTitle = document.createElement("li");
+                            var LiAuthor = document.createElement("li");
+                            var LiJournal = document.createElement("li");
+
+                            var tempURL = "https://www.ncbi.nlm.nih.gov/pubmed/" + tempArticles[j].children[0].innerHTML;
+                            var tempTitle = (tempArticles[j].children[6].innerHTML).link(tempURL);
+                            var finalTitle = document.createElement("b");
+                            finalTitle.innerHTML = tempTitle;
+
+                            LiDate.appendChild(document.createTextNode(tempArticles[j].children[1].innerHTML));
+                            LiTitle.appendChild(finalTitle);
+                            LiAuthor.appendChild(document.createTextNode(listAuthors));
+                            LiJournal.appendChild(document.createTextNode(tempArticles[j].children[23].innerHTML));
+
+                            LiDate.classList.add('LiDate');
+                            LiTitle.classList.add('LiTitle');
+                            LiAuthor.classList.add('LiAuthor');
+                            LiJournal.classList.add('LiJournal');
+
+                            tempNode.appendChild(LiTitle);
+                            tempNode.appendChild(LiDate);
+                            tempNode.appendChild(LiAuthor);
+                            tempNode.appendChild(LiJournal);
+
+                            document.getElementById("articles").appendChild(tempNode);
+                        }
+
+                        console.log(finalArticles);
+
                     }
                 }
                 fetchArticles.open('GET', 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&query_key=' + queryKey + '&WebEnv=' + tempWebEnv, true);

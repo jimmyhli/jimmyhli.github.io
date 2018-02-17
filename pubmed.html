@@ -36,6 +36,7 @@ ul {
       <script>
 var finalIDs = "";
 var finalArticles = [];
+var APTFaculty = ['Barr A','Bernatchez P','Bhagavatula S','Dormuth C','Fedida D','Hackett T','Horne A','Laher I','Leung J','Maclure M','Musini V','Pang C','Shabbits J','Wright JM ','Eldstrom J','Fisher A','Mostaco-Guidolin L','Murray C','Payne B','Petersen C','Pourrier M','Puil L','Va H','Ahern C','Angle P','Bardal S','Beatch G','Borgland S','Butterfield N','Curry K','Esfandiarei M','Franciosi L','Goodchild S','Green C','Hegle A','Jaffary F','Johnson B','Kaan T','Knight D','Kurata H','Rivera-Acevedo R','Wallener M','Bridges M','Donen N','Fameli N','Mcafee D','Steward D','Warriner B','Godin D','Karim S','Macleod B','Puil E','Walker MJ ','Wall R'];
 
 var fetchIDs = new XMLHttpRequest();
 fetchIDs.onreadystatechange = function() {
@@ -80,7 +81,10 @@ fetchIDs.onreadystatechange = function() {
                             var listAuthors = "";
 
                             for (let k = 0; k < tempAuthors.length; k++){
-                                listAuthors = listAuthors + tempAuthors[k].innerHTML + ", ";
+                                if (APTFaculty.includes(tempAuthors[k].innerHTML)){
+                                    listAuthors = listAuthors + "<span style='font-weight: bold;'>" + tempAuthors[k].innerHTML + "</span>" + ", ";
+                                }
+                                else listAuthors = listAuthors + tempAuthors[k].innerHTML + ", ";
                             }
                             listAuthors = listAuthors.substring(0, listAuthors.length - 2);
 
@@ -102,9 +106,12 @@ fetchIDs.onreadystatechange = function() {
                             var finalTitle = document.createElement("b");
                             finalTitle.innerHTML = tempTitle;
 
+                            var finalAuthors = document.createElement("div");
+                            finalAuthors.innerHTML = listAuthors;
+
                             LiDate.appendChild(document.createTextNode(tempArticles[j].children[1].innerHTML));
                             LiTitle.appendChild(finalTitle);
-                            LiAuthor.appendChild(document.createTextNode(listAuthors));
+                            LiAuthor.appendChild(finalAuthors);
                             LiJournal.appendChild(document.createTextNode(tempArticles[j].children[23].innerHTML));
 
                             LiDate.classList.add('LiDate');

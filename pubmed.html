@@ -11,15 +11,29 @@
 
 ul {
     margin-top: 30px;
+    margin-left: 30px;
 }
-
  
 </style>
 
+   <!DOCTYPE html>
+  <html>
+    <head>
+      <title>PubMed</title>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"  media="screen,projection"/>
+    </head>
+    <body>
+
+
 <div id="articles"></div>
 
-
-<script>
+ <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <script>
 var finalIDs = "";
 var finalArticles = [];
 
@@ -30,22 +44,22 @@ fetchIDs.onreadystatechange = function() {
         var tempIDs = xmlListofID.getElementsByTagName("IdList");
         console.log(tempIDs);
         for (var i = 0; i < 10; i++){
-         	 finalIDs = finalIDs + tempIDs[0].children[i].innerHTML + ",";
+             finalIDs = finalIDs + tempIDs[0].children[i].innerHTML + ",";
         }
         console.log(finalIDs);
         console.log('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/epost.fcgi?db=pubmed&id='+ finalIDs);
 
         var fetchMeta = new XMLHttpRequest();
         fetchMeta.onreadystatechange = function(){
-        	if (fetchMeta.readyState == XMLHttpRequest.DONE) {
-        		var xmlWebEnv = fetchMeta.responseXML;
-        		var queryKey = xmlWebEnv.getElementsByTagName("QueryKey")[0].innerHTML;
-        		var tempWebEnv = xmlWebEnv.getElementsByTagName("WebEnv")[0].innerHTML;
+            if (fetchMeta.readyState == XMLHttpRequest.DONE) {
+                var xmlWebEnv = fetchMeta.responseXML;
+                var queryKey = xmlWebEnv.getElementsByTagName("QueryKey")[0].innerHTML;
+                var tempWebEnv = xmlWebEnv.getElementsByTagName("WebEnv")[0].innerHTML;
 
-        		console.log(xmlWebEnv);
+                console.log(xmlWebEnv);
 
-        		console.log(queryKey);
-        		console.log(tempWebEnv);
+                console.log(queryKey);
+                console.log(tempWebEnv);
 
                 var fetchArticles = new XMLHttpRequest();
                 fetchArticles.onreadystatechange = function(){
@@ -113,7 +127,7 @@ fetchIDs.onreadystatechange = function() {
                 fetchArticles.open('GET', 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&query_key=' + queryKey + '&WebEnv=' + tempWebEnv, true);
                 fetchArticles.send(null);
 
-        	}
+            }
         }
         fetchMeta.open('GET','https://eutils.ncbi.nlm.nih.gov/entrez/eutils/epost.fcgi?db=pubmed&id='+ finalIDs, true);
         fetchMeta.send(null);
@@ -123,3 +137,5 @@ fetchIDs.open('GET', 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi
 fetchIDs.send(null);
 
 </script>
+</body>
+</html>

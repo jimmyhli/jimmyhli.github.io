@@ -13,10 +13,6 @@ ul {
     margin-top: 30px;
     margin-left: 30px;
 }
-
-.affilates {
-    font-weight: 900;
-}
  
 </style>
 
@@ -86,10 +82,10 @@ fetchIDs.onreadystatechange = function() {
 
                             for (let k = 0; k < tempAuthors.length; k++){
                                 if (APTFaculty.includes((tempAuthors[k].innerHTML).substring(0, tempAuthors[k].innerHTML.length - 1))){
-                                    listAuthors = listAuthors + "<span class='affilates'" + tempAuthors[k].innerHTML + "</span>" + ", ";
+                                    listAuthors = listAuthors + "<span style='font-weight: bold;'>" + tempAuthors[k].innerHTML + "</span>" + ", ";
                                 }
                                 else if (APTFaculty.includes((tempAuthors[k].innerHTML))){
-                                    listAuthors = listAuthors + "<span class='affilates'" + tempAuthors[k].innerHTML + "</span>" + ", ";
+                                    listAuthors = listAuthors + "<span style='font-weight: bold;'>" + tempAuthors[k].innerHTML + "</span>" + ", ";
                                 }                                
                                 else listAuthors = listAuthors + tempAuthors[k].innerHTML + ", ";
                             }

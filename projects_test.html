@@ -17,6 +17,14 @@
     <style> html, body { margin: 0; padding: 0; height: 100%; } </style>
     <script src="https://unpkg.com/xlsx-style@0.8.13/dist/xlsx.full.min.js"></script>
     <script src="https://unpkg.com/ag-grid-community@19.0.0/dist/ag-grid-community.min.js"></script></head>
+    <style>
+      .ag-font-style {
+        user-select: initial;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        -webkit-user-select: text;
+      }
+    </style>
   </head>
   <body class="subpage">
 
@@ -131,6 +139,8 @@
                 rowIndex++;
             }
 
+            console.log(rowData)
+
             // finally, set the imported rowData into the grid
             gridOptions.api.setRowData(rowData);
         }
@@ -153,12 +163,12 @@
 
         // specify the columns
         var columnDefs = [
-            {headerName: "Name", field: "Name"},
+            {headerName: "Name", field: "Name", cellStyle: {'white-space': 'normal'}},
             {headerName: "Introduction", field: "Introduction", width: 270, cellStyle: {'white-space': 'normal'}},
             {headerName: "Start Date", field: "Start Date", cellStyle: {'white-space': 'normal'}},
             {headerName: "End Date", field: "End Date", cellStyle: {'white-space': 'normal'}},
-            {headerName: "Status", field: "Status", cellStyle: {'white-space': 'normal'}},
-            {headerName: "Type", field: "Type", width: 120},
+            {headerName: "Status", field: "Status", width: 320, cellStyle: {'white-space': 'normal'}},
+            {headerName: "Type", field: "Type", width: 120,  cellStyle: {'white-space': 'normal'}},
             {headerName: "Language", field: "Language", cellStyle: {'white-space': 'normal'}},
             {headerName: "Frameworks", field: "Frameworks", cellStyle: {'white-space': 'normal'}},
             {headerName: "Platform", field: "Platform", cellStyle: {'white-space': 'normal'}},
@@ -175,11 +185,7 @@
             rowData: rowData,
             enableColResize: true,
             enableFilter: true,
-            suppressRowTransform: true,
             rowHeight: 150,
-            onGridReady: function () {
-                gridOptions.api.sizeColumnsToFit();
-            }
         };
 
         // wait for the document to be loaded, otherwise
@@ -188,6 +194,14 @@
 
             // lookup the container we want the Grid to use
             var eGridDiv = document.querySelector('#myGrid');
+
+            // sizeColumnToFit() results in all columns being squeezed even on mobile
+            // This is a workaround to fix the problem
+            if (window.innerWidth > 720) {
+                gridOptions["onGridReady"] =  function () {
+                    gridOptions.api.sizeColumnsToFit();
+                }
+            }
 
             // create the grid passing in the div to use together with the columns & data we want to use
             new agGrid.Grid(eGridDiv, gridOptions);

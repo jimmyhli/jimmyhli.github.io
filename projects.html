@@ -139,8 +139,6 @@
                 rowIndex++;
             }
 
-            console.log(rowData)
-
             // finally, set the imported rowData into the grid
             gridOptions.api.setRowData(rowData);
         }
@@ -197,7 +195,7 @@
 
             // sizeColumnToFit() results in all columns being squeezed even on mobile
             // This is a workaround to fix the problem
-            if (window.innerWidth > 720) {
+            if (window.innerWidth > 960) {
                 gridOptions["onGridReady"] =  function () {
                     gridOptions.api.sizeColumnsToFit();
                 }

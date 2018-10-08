@@ -144,13 +144,29 @@
         }
 
         function importExcel() {
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function () {
+              if (this.readyState === 4 && this.status === 200) {
+                  var workbook = convertDataToWorkbook(this.response);
+                  populateGrid(workbook);
+              }
+              else {
+                  // fall back to self-hosted xlsx
+                  importExcelBackup()
+              }
+          };
+          xhr.open('GET', 'https://docs.google.com/spreadsheet/pub?key=1LREq1k3-BjAbQKTBL_cU6TV7QX0GH8qSJmgywO_tJOQ&output=xls', true);
+          xhr.send(null);
+        }
+
+        function importExcelBackup() {
             makeRequest('GET',
                 'https://haoyuanli.github.io/projects.xlsx',
                 // success
                 function (data) {
                     var workbook = convertDataToWorkbook(data);
-
                     populateGrid(workbook);
+                    console.log("Main method failed, back up file used.")
                 },
                 // error
                 function (error) {

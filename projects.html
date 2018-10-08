@@ -155,6 +155,7 @@
                   importExcelBackup()
               }
           };
+          xhr.responseType = "arraybuffer";
           xhr.open('GET', 'https://docs.google.com/spreadsheet/pub?key=1LREq1k3-BjAbQKTBL_cU6TV7QX0GH8qSJmgywO_tJOQ&output=xls', true);
           xhr.send(null);
         }

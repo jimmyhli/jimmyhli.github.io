@@ -1,6 +1,6 @@
 ## About me
 
-I am a fourth-year computer science student at [the University of British Columbia](https://www.ubc.ca), expecting to graduate in May 2018.
+I am a recent grad majoing in computer science student at [the University of British Columbia](https://www.ubc.ca).
 
 ### Programming Projects
 

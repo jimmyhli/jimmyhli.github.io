@@ -1,6 +1,6 @@
 ## About me
 
-I am a recent grad majoing in computer science student at [the University of British Columbia](https://www.ubc.ca).
+I am a recent grad majoing in computer science student from [the University of British Columbia](https://www.ubc.ca).
 
 ### Programming Projects
 
@@ -8,7 +8,7 @@ Come [here](https://haoyuanli.github.io/projects) to view a list of programming 
 
 ### Besides Coding...
 
-I sometimes [put words together](https://haoyuanli.github.io/publications)!
+I sometimes [put words together](https://haoyuanli.github.io/articles)!
 
 I like chasing after [typhoons](https://metoc.ndbc.noaa.gov/JTWC/)...
 

@@ -1,6 +1,6 @@
 ## About me
 
-I am a recent grad majoing in computer science student from [the University of British Columbia](https://www.ubc.ca).
+I am a recent grad majoring in computer science student from [the University of British Columbia](https://www.ubc.ca).
 
 ### Programming Projects
 

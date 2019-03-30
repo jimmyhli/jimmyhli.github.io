@@ -4,7 +4,7 @@ I am a recent grad majoring in computer science student from [the University of 
 
 ### Programming Projects
 
-Come [here](https://haoyuanli.github.io/projects) to view a list of programming projects that I have been working on. If you are interested, check out how it looked like [previously](https://haoyuanli.github.io/projects_deprecated)
+Come [here](https://haoyuanli.github.io/projects) to view a list of programming projects that I have been working on. If you are interested, check out how it looked like [previously](https://haoyuanli.github.io/projects_deprecated).
 
 ### Besides Coding...
 

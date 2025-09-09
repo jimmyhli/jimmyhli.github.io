@@ -204,8 +204,8 @@
                 <input type="number" id="thresholdInput" min="0.01" max="1.0" step="0.01" value="0.1">
             </label>
             <label>
-                Cooldown Period (5-120s):
-                <input type="number" id="cooldownInput" min="5" max="120" step="1" value="30">
+                Cooldown Period (1-30 min):
+                <input type="number" id="cooldownInput" min="1" max="30" step="0.5" value="10">
             </label>
         </div>
         <div class="button-group">
@@ -241,8 +241,15 @@
         }
 
         function getCooldownPeriod() {
-            const value = parseInt(cooldownInput.value) * 1000; // Convert seconds to milliseconds
-            return isNaN(value) || value < 5000 || value > 120000 ? 30000 : value;
+            const value = parseFloat(cooldownInput.value) * 60 * 1000; // Convert minutes to milliseconds
+            return isNaN(value) || value < 1 * 60 * 1000 || value > 30 * 60 * 1000 ? 10 * 60 * 1000 : value;
+        }
+
+        function formatCooldownTime(remainingMs) {
+            const totalSeconds = Math.ceil(remainingMs / 1000);
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            return `${minutes} minutes and ${seconds} seconds`;
         }
 
         function getNoiseLevelDescription(db) {
@@ -268,7 +275,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `snore_log_${new Date().toISOString().replace(/[:.]/g, '-')}.txt`;
+            a.download = `snore_log_${new Date().toISOString().replace(/[-:T.]/g, '').slice(0, 14)}.txt`;
             a.click();
             URL.revokeObjectURL(url);
         }
@@ -293,7 +300,8 @@
                     audio.src = url;
                     const link = document.createElement('a');
                     link.href = url;
-                    link.download = `snore_${new Date().toISOString().replace(/[:.]/g, '-')}.wav`;
+                    const timestamp = new Date().toISOString().replace(/[-:T.]/g, '').slice(0, 14); // YYYYMMDDHHMMSS
+                    link.download = `snore_${timestamp}.wav`;
                     link.textContent = `Snore clip at ${new Date().toLocaleString()}`;
                     div.appendChild(audio);
                     div.appendChild(link);
@@ -303,12 +311,12 @@
                 };
 
                 mediaRecorder.start();
-                logMessage('Started recording 5-second clip.');
+                logMessage('Started recording 10-second clip.');
                 setTimeout(() => {
                     if (mediaRecorder.state === 'recording') {
                         mediaRecorder.stop();
                     }
-                }, 5000); // 5-second clip
+                }, 10000); // 10-second clip
             } catch (err) {
                 logMessage('Error starting recording: ' + err.message);
                 isRecording = false;
@@ -337,7 +345,8 @@
                         const currentTime = Date.now();
                         const cooldownPeriod = getCooldownPeriod();
                         if (lastDetectionTime && (currentTime - lastDetectionTime < cooldownPeriod)) {
-                            status.textContent = `Snore Detection: Idle (Cooldown for ${Math.ceil((cooldownPeriod - (currentTime - lastDetectionTime)) / 1000)}s)`;
+                            const remainingMs = cooldownPeriod - (currentTime - lastDetectionTime);
+                            status.textContent = `Snore Detection: Idle (Cooldown for ${formatCooldownTime(remainingMs)})`;
                             return;
                         }
 
@@ -356,7 +365,7 @@
                         const threshold = getThreshold();
                         if (rms > threshold && lowFreqEnergy > 50 && !isRecording) {
                             const noiseLevel = getNoiseLevelDescription(db);
-                            logMessage(`Possible snore detected (threshold: ${threshold}, dB: ${db.toFixed(1)} ${noiseLevel})! Recording 5-second clip.`);
+                            logMessage(`Possible snore detected (threshold: ${threshold}, dB: ${db.toFixed(1)} ${noiseLevel})! Recording 10-second clip.`);
                             status.textContent = 'Snore Detection: Snore Detected!';
                             lastDetectionTime = Date.now();
                             startRecording(stream);
